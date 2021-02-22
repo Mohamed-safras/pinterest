@@ -1,0 +1,15 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+export const userSlice = createSlice({
+  name: "user",
+  initialState: {
+    user: null,
+  },
+  reducers: {},
+});
+
+export const {} = userSlice.actions;
+
+export const selectCount = (state) => state.user.user;
+
+export default userSlice.reducer;
