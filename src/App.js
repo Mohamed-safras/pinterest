@@ -1,12 +1,10 @@
 import React from "react";
-import Header from "./components/Header";
+import Home from "./components/afterLogin/Home";
+import LoginHomeScreen from "./components/beforeLogin/LoginHomeSceen";
 
 const App = () => {
-  return (
-    <div>
-      <Header />
-    </div>
-  );
+  const user = "";
+  return <div className="app">{!user ? <LoginHomeScreen /> : <Home />}</div>;
 };
 
 export default App;
