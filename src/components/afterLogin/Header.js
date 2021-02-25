@@ -2,12 +2,15 @@ import styled from "styled-components";
 import PinterestIcon from "@material-ui/icons/Pinterest";
 import SearchIcon from "@material-ui/icons/Search";
 import SmsIcon from "@material-ui/icons/Sms";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { Avatar, Button, IconButton } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
+import { useState } from "react";
+import Account from "./Account";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -21,9 +24,9 @@ const StyledBadge = withStyles((theme) => ({
       width: "100%",
       height: "100%",
       borderRadius: "50%",
-      animation: "$ripple 1.2s infinite ease-in-out",
+      // animation: "$ripple 1.2s infinite ease-in-out",
       border: "1px solid currentColor",
-      content: '""',
+      // content: '""',
     },
   },
   "@keyframes ripple": {
@@ -58,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(3),
   },
 }));
-const Header = () => {
+const Header = ({ ismenuOpen, setIsmenuOpen }) => {
   const classes = useStyles();
   return (
     <Wrapper>
@@ -106,8 +109,15 @@ const Header = () => {
             />
           </StyledBadge>
         </IconButton>
-        <IconButton>
-          <ExpandMoreIcon className={classes.xsmall} />
+        <IconButton onClick={() => setIsmenuOpen(!ismenuOpen)}>
+          {ismenuOpen ? (
+            <ExpandMoreIcon
+              style={{ color: "black" }}
+              className={classes.xsmall}
+            />
+          ) : (
+            <ExpandMoreIcon className={classes.xsmall} />
+          )}
         </IconButton>
       </WrapperRight>
     </Wrapper>
@@ -127,7 +137,6 @@ const Wrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 100;
-  overflow: hidden;
 `;
 const LogoWrapper = styled.div`
   .MuiSvgIcon-root {
